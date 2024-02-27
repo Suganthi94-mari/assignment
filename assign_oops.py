@@ -6,7 +6,8 @@ import json
 
 class Employee:
 
-    ''' This class for employee for showing employee details'''
+    """Create the class for adding ,displaying employee details
+    for user """
     def _init_(self, name, emp_id, title, department):
         self.name = name
         self.emp_id = emp_id
@@ -27,7 +28,8 @@ print(str(employee1))
 
 class Department:
 
-    '''This class for adding removing and list out employee details '''
+    """Create the class for adding ,removing,displyinmg departments
+    for user """
     def _init_(self, name):
         self.name = name
         self.employees = []
@@ -67,6 +69,8 @@ department.list_employees()
 
 ########################### Company Details#############################
 class Company:
+    """Create the class for adding ,removing,displyinmg departments
+    for user """
     def __init__(self):
         self.departments = {}
 
@@ -85,6 +89,7 @@ class Company:
             print(f"{department_name} department does not exist.")
 
     def display_departments(self):
+
         print("Departments in the company:")
         for department_name, department_obj in self.departments.items():
             print(department_name)
@@ -115,6 +120,8 @@ def print_menu():
 
 
 def add_employee(company):
+    """Create the function for adding employee
+    for user"""
     department_name = input("Enter department name: ")
     if department_name in company.departments:
         name = input("Enter employee name: ")
@@ -129,6 +136,8 @@ def add_employee(company):
 
 
 def remove_employee(company):
+    """Create the function for removing employee
+    for user"""
     department_name = input("Enter department name: ")
     if department_name in company.departments:
         department = company.departments[department_name]
@@ -143,6 +152,8 @@ def remove_employee(company):
 
 
 def display_department(company):
+    """Create the function for showing departments
+    for user"""
     department_name = input("Enter department name: ")
     if department_name in company.departments:
         company.departments[department_name].list_employees()
@@ -151,20 +162,26 @@ def display_department(company):
 
 
 def add_department(company):
+    """Create the function for adding departments
+    for user"""
     department_name = input("Enter new department name: ")
     company.add_department(department_name)
 
 
 def remove_department(company):
+    """Create the function for removing departments
+    from company data"""
     department_name = input("Enter department name to remove: ")
     company.remove_department(department_name)
 
 ############################saving company data into a json file ##################
 def save_company_data(company):
+    """Create the function for dumb data into json file"""
     with open("company_data.json", "w") as file:
         json.dump(company.departments, file, default=lambda x: x.__dict__)
 
 def load_company_data():
+    """Create the function for load data into json file"""
     try:
         with open("company_data.json", "r") as file:
             data = json.load(file)
@@ -177,6 +194,8 @@ def load_company_data():
     except FileNotFoundError:
         return {}
 def employee_management_system():
+
+    """Create main function """
     company = Company()
 
     while True:
@@ -200,6 +219,6 @@ def employee_management_system():
             print("Invalid choice. Please enter a number between 1 and 6.")
 
 
-################Function calling ###############
+
 employee_management_system()
 
